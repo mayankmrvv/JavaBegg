@@ -1,0 +1,34 @@
+//Simple Calculator
+Scanner sc = new Scanner(System.in);
+System.out.println("MENU");
+System.out.println("=====");
+System.out.println("ADD");
+System.out.println("SUBTRACT");
+System.out.println("DIVIDE");
+System.out.println("MULTIPLY");
+System.out.println("Enter 2 Numbers");
+int a= sc.nextInt();
+int b = sc.nextInt();
+sc.nextLine();
+System.out.println("Enter the Command in Words");
+String command = sc.nextLine();
+switch (command){
+    case "ADD" : 
+        int sum = a+b;
+        System.out.println(sum);
+        break;
+    case "SUBTRACT" : 
+        int diff = a-b;
+        System.out.println(diff);
+        break;
+    case "MULTIPLY" : 
+        int pro = a*b;
+        System.out.println(pro);
+        break;
+    case "DIVIDE" : 
+        int quo = a/b;
+        System.out.println(quo);
+        break;
+    default: 
+        System.out.println("Invalid Command");
+        break;
