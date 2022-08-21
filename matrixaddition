@@ -1,0 +1,67 @@
+// Program to Take 2 Matrices as Input from User and Display the Sum of two Matrices
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Rows of Matrix 1");
+        int row1 = sc.nextInt();
+        System.out.println("Enter the Columns of Matrix 1");
+        int col1 = sc.nextInt();
+        int A[][] = new int[row1][col1];
+        System.out.println("Enter the Rows of Matrix 2");
+        int row2 = sc.nextInt();
+        System.out.println("Enter the Columns of Matrix 2");
+        int col2 = sc.nextInt();
+        int B[][] = new int[row2][col2];
+        if (row1 == row2 && col1 == col2) {
+            System.out.println("Addition Possible");
+            int C[][] = new int[row1][col1];
+
+//Taking Elements for Matrix 1
+            System.out.println("Enter Elements of Matrix 1");
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    A[i][j] = sc.nextInt();
+                }
+            }
+// Printing Matrix 1
+            System.out.println("Matrix 1:");
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    System.out.print(A[i][j] + " ");
+                }
+                System.out.println("");
+            }
+
+//Taking Elements for Matrix 2
+            System.out.println("Enter Elements of Matrix 2");
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    B[i][j] = sc.nextInt();
+                }
+            }
+// Printing Matrix 1
+            System.out.println("Matrix 2:");
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    System.out.print(B[i][j] + " ");
+                }
+                System.out.println("");
+            }
+
+//Adding Matrix 1 and 2
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    C[i][j] = A[i][j] + B[i][j];
+                }
+            }
+
+//Printing Matrix 3:
+            System.out.println("Matrix 3:");
+            for (int i = 0; i <= row1 - 1; i++) {
+                for (int j = 0; j <= col1 - 1; j++) {
+                    System.out.print(C[i][j] + " ");
+                }
+                System.out.println("");
+            }
+        } else {
+            System.out.println("Addition Not Possible");
+
+        }
