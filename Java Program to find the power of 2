@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class JavaApplication64 {
+
+  public static int power2(int a){
+      int output=2;
+      for(int i=1; i<a; i++){
+      output = 2*output;
+     
+      }
+      return output;
+  }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the desired power of 2");
+        int b = sc.nextInt();
+       System.out.println("The Value of 2 raised to the power"+" "+ b+" is "+power2(b));
+    }
