@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class JavaApplication62 {
+    public static void doll(int dollinput){
+        if(dollinput == 1){
+            System.out.println("All Out");
+        }
+        else{
+            System.out.println("Still In");
+                        doll(dollinput-1);
+
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner i = new Scanner(System.in);
+        System.out.println("Number of dolls");
+        int a = i.nextInt();
+        doll(a);
+        
+        
+    }
+    
+}
