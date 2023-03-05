@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class JavaApplication70 {
+
+    public static void sumOfDigits(int n) {
+        int sum = 0;
+        if (n < 0) {
+            System.out.println("Enter a Positive Number");
+        } else {
+            while (n > 0) {
+                int b = n % 10;
+                sum = sum + b;
+                n = n / 10;
+
+            }
+            System.out.println(sum);
+
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your number");
+        int inp = sc.nextInt();
+        sumOfDigits(inp);
+
+    }
+
+}
