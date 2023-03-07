@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class JavaApplication86 {
+
+    public static void rev(int A[]) {
+        for (int i = 0; i <= A.length - 1; i++) {
+            System.out.print(A[(A.length-1) - i]+" ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of the array");
+        int s = sc.nextInt();
+        int A[] = new int[s];
+
+        for (int i = 0; i <= A.length - 1; i++) {
+            System.out.println("Enter Element Number" + (i + 1));
+            A[i] = sc.nextInt();
+        }
+        rev(A);
+    }
+
+}
