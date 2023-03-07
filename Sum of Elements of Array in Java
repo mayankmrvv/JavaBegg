@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class JavaApplication80 {
+
+    public static int sum(int A[], int B) {
+
+        int sumStart = 0;
+        for (int i = 0; i <= A.length - 1; i++) {
+            sumStart = sumStart + A[i];
+        }
+        return sumStart;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of the array");
+        int s = sc.nextInt();
+        int A[] = new int[s];
+
+        for (int i = 0; i <= A.length - 1; i++) {
+            System.out.println("Enter Element Number" + (i + 1));
+            A[i] = sc.nextInt();
+        }
+        System.out.println(sum(A, s));
+
+    }
+
+}
