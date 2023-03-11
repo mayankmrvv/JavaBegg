@@ -1,0 +1,27 @@
+public class JavaApplication95 {
+
+    public static void missing(int[] a) {
+        int size = a.length;
+        int sumInput=0;
+        int sumActual=(10*(10+1))/2;
+        
+        for(int i=0; i<=size-1; i++){
+            sumInput=sumInput+a[i];
+        }
+        int missingNumber = sumActual-sumInput;
+        if(missingNumber==0){
+            System.out.println("There is no Missing Number");
+        }
+        else{
+            System.out.println("The missing Number is:"+missingNumber);
+        }
+
+    }
+
+    public static void main(String[] args) {
+       int intArray[] = {1, 2, 3, 4, 5, 6, 8, 9, 10};
+        missing(intArray);
+
+    }
+
+}
