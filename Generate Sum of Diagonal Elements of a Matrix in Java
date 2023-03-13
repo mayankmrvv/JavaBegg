@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class JavaApplication105 {
+
+    public static void diagonalSum(int arr[][]) {
+        int rows = arr.length;
+        int sum = 0;
+        for (int i = 0; i <= rows - 1; i++) {
+            for (int j = 0; j <= rows - 1; j++) {
+                if (i == j) {
+                    sum = sum + arr[i][j];
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+
+    public static void main(String[] args) {
+        //Taking Matrix Input
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Number of Rows: ");
+        int m = sc.nextInt();
+        System.out.println("Enter the Number of Columns: ");
+        int n = sc.nextInt();
+
+        int arr1[][] = new int[m][n];
+        for (int i = 0; i <= m - 1; i++) {
+            for (int j = 0; j <= n - 1; j++) {
+                System.out.println("Enter [" + (i + 1) + ", " + (j + 1) + "]th Element");
+                arr1[i][j] = sc.nextInt();
+            }
+        }
+
+        //Printing Original Matrix
+        System.out.println("The Original Matrix is: ");
+        for (int i = 0; i <= m - 1; i++) {
+            for (int j = 0; j <= n - 1; j++) {
+                System.out.print(arr1[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+        
+        diagonalSum(arr1);
+    }
+
+}
