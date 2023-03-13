@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class JavaApplication103 {
+
+    public static void rotateBy90Degree(int[][] arr) {
+        //Transposing the Matrix
+        int temp = 0;
+        int temp2 = 0;
+        int r = arr.length;
+        int c = arr[0].length;
+        if (r == c) {
+            for (int i = 0; i <= r - 1; i++) {
+                for (int j = i + 1; j <= r - 1; j++) {
+                    temp = arr[i][j];
+                    arr[i][j] = arr[j][i];
+                    arr[j][i] = temp;
+                }
+            }
+        } else {
+            System.out.println("Please Enter a Square Matrix");
+
+        }
+
+        //Printing Transposed Matrix
+        System.out.println("The Transposed Matrix is: ");
+        for (int i = 0; i <= r - 1; i++) {
+            for (int j = 0; j <= r - 1; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+
+        //Reversing the Matrix
+        for (int i = 0; i <= r - 1; i++) {
+            int left = 0;
+            int right = r - 1;
+            temp2 = arr[i][left];
+            arr[i][left] = arr[i][right];
+            arr[i][right] = temp2;
+            left = left + 1;
+            right = right - 1;
+        }
+
+        //Printing Reversed Matrix
+        System.out.println("The Reversed Matrix is: ");
+        for (int i = 0; i <= r - 1; i++) {
+            for (int j = 0; j <= r - 1; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+    }
+
+    public static void main(String[] args) {
+        //Taking Matrix Input
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Number of Rows: ");
+        int m = sc.nextInt();
+        System.out.println("Enter the Number of Columns: ");
+        int n = sc.nextInt();
+        if(!(m==n)){
+            System.out.println("Number of Rows must be Equal to Number of Columns");
+        } 
+        else{
+            int arr1[][] = new int[m][n];
+        for (int i = 0; i <= m - 1; i++) {
+            for (int j = 0; j <= m - 1; j++) {
+                System.out.println("Enter [" + (i + 1) + ", " + (j + 1) + "]th Element");
+                arr1[i][j] = sc.nextInt();
+            }
+        }
+
+        //Printing Original Matrix
+        System.out.println("The Original Matrix is: ");
+        for (int i = 0; i <= m - 1; i++) {
+            for (int j = 0; j <= m - 1; j++) {
+                System.out.print(arr1[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+
+        rotateBy90Degree(arr1);
+        }
+        
+    }
+
+}
