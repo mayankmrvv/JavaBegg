@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class JavaApplication110 {
+
+  public static int[] sortedDuplicate(int a[]){
+      int j=0;
+      int size= a.length-1;
+      for(int i=0; i<=size-1; i++){
+          if(a[i]!=a[i+1]){
+              a[j]=a[i];
+              j=j+1;
+          }
+      }
+      a[j]=a[size];
+      int a1[]= new int[j+1];
+      for(int i=0; i<=j; i++){
+          a1[i]=a[i];
+      }
+      return a1;
+  }
+    public static void main(String[] args) {
+        int inp[]={1, 1, 2, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(sortedDuplicate(inp)));
+    }
+    
+}
