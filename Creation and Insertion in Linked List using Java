@@ -1,0 +1,73 @@
+public class Node {
+    public int value;
+    public Node next;
+    
+}
+
+public class linkedlist2 {
+
+    public Node head;
+    public Node tail;
+    public int size;
+
+    public Node create(int newValue) {
+        head = new Node();
+        Node node = new Node();
+        node.value = newValue;
+        node.next = null;
+        head = node;
+        tail = node;
+        size = 1;
+        return head;
+
+    }
+
+    public void insert(int value, int location) {
+        Node node = new Node();
+        node.value = value;
+
+        if (head == null) {
+            create(value);
+            return;
+        } else if (location == 1) {
+            node.next = head;
+            head = node;
+        } else if (location > size) {
+            node.next = null;
+            tail.next = node;
+            tail = node;
+
+        } else {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 0; i < location - 2; i++) {
+                tempNode = tempNode.next;
+            }
+            node.next = tempNode.next;
+            tempNode.next = node;
+
+        }
+        size=size+1;
+    }
+
+}
+
+
+public class LinkedListTryAgain {
+
+    public static void main(String[] args) {
+linkedlist2 ll2 = new linkedlist2();
+ll2.create(5);
+ll2.insert(6, 3);
+ll2.insert(7, 2);
+ll2.insert(8, 2);
+System.out.println(ll2.head.value);
+System.out.println(ll2.head.next.value);
+System.out.println(ll2.head.next.next.value);
+System.out.println(ll2.head.next.next.next.value);
+
+
+
+    }
+    
+}
