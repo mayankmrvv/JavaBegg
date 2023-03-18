@@ -1,0 +1,195 @@
+public class Node {
+    public int value;
+    public Node next;
+    
+}
+
+public class CSLL {
+
+    public Node head;
+    public Node tail;
+    public int size;
+
+    public Node create(int nodeValue) {
+        head = new Node();
+        Node node = new Node();
+        node.value = nodeValue;
+        node.next = node;
+        head = node;
+        tail = node;
+        size = 1;
+        return head;
+    }
+
+    public void insert(int nodeValue, int location) {
+        Node node = new Node();
+        node.value = nodeValue;
+        if (head == null) {
+            create(nodeValue);
+        } else if (location == 1) {
+            node.next = head;
+            head = node;
+            tail.next = node;
+        } else if (location > size) {
+            tail.next = node;
+            tail = node;
+            tail.next = head;
+        } else {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 1; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            node.next = tempNode.next;
+            tempNode.next = node;
+        }
+        size = size + 1;
+    }
+
+    public void traverse() {
+        Node tempNode = head;
+        if (head == null) {
+            System.out.println("No Linked List Present");
+        } else {
+            System.out.print(head.value + " --->");
+            for (int i = 1; i < size; i++) {
+                tempNode = tempNode.next;
+                System.out.print(tempNode.value);
+                if (i != size - 1) {
+                    System.out.print("--->");
+
+                }
+            }
+            System.out.println("");
+        }
+
+    }
+
+    public void findByLocation(int location) {
+        if (location == 1) {
+            System.out.println(head.value);
+
+        } else if (location == size) {
+            System.out.println(tail.value);
+        } else {
+            Node tempNode = head;
+            for (int i = 0; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            System.out.println(tempNode.value);
+        }
+    }
+
+    public boolean search(int nodeValue) {
+        if (head != null) {
+            Node tempNode = head;
+            for (int i = 1; i <= size; i++) {
+                if (tempNode.value == nodeValue) {
+                    System.out.println("Value Found at: " + i);
+                    return true;
+                }
+                tempNode = tempNode.next;
+            }
+
+        }
+        System.out.println("Not Found");
+
+        return false;
+    }
+
+    public void delete(int location) {
+        if (location == 1) {
+            head = head.next;
+            tail.next = head.next;
+            size = size - 1;
+            if (size == 0) {
+                head.next = null;
+                tail = null;
+                head = null;
+
+            }
+        } else if (location >= size) {
+            Node tempNode = head;
+            for (int i = 1; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = head;
+            tail = tempNode;
+            size = size - 1;
+            if (size == 0) {
+                head.next = null;
+                tail = null;
+                head = null;
+            }
+
+        } else {
+            Node tempNode = head;
+            for (int i = 1; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = tempNode.next.next;
+            size = size - 1;
+        }
+    }
+
+    public void deleteCircularSinglyLinkedList() {
+        if (head == null) {
+            System.out.println("Circular Singly Linked List Doesn't Exist");
+        } else {
+            head = null;
+            tail.next = null;
+            tail = null;
+            System.out.println("Circular Singly Linked List Deleted");
+        }
+
+    }
+}
+
+public class CircularSinglyLinkedList {
+
+    public static void main(String[] args) {
+CSLL csll = new CSLL();
+csll.create(10);
+System.out.println(csll.head.value);
+System.out.println("------------------");
+csll.insert(1, 1);
+csll.insert(3, 1);
+csll.insert(2, 2);
+csll.insert(4, 4);
+System.out.println(csll.head.value);
+System.out.println(csll.head.next.value);
+System.out.println(csll.head.next.next.value);
+System.out.println(csll.head.next.next.next.value);
+System.out.println(csll.head.next.next.next.next.value);
+System.out.println("--------------------------");
+csll.traverse();
+System.out.println("--------------------------");
+csll.findByLocation(1);
+csll.findByLocation(5);
+csll.findByLocation(3);
+System.out.println("--------------------------");
+csll.search(12);
+System.out.println("--------------------------");
+csll.delete(1);
+csll.traverse();
+csll.delete(4);
+csll.traverse();
+csll.delete(2);
+csll.traverse();
+System.out.println("--------------------------");
+csll.deleteCircularSinglyLinkedList();
+csll.traverse();
+
+
+
+
+
+
+
+
+
+
+
+    }
+    
+}
