@@ -1,0 +1,149 @@
+public class Node {
+    public int value;
+    public Node next;
+}
+
+
+public class SinlyLinkedListMethods {
+
+    public Node head;
+    public Node tail;
+    public int size;
+
+    public Node create(int nodeValue) {
+        head = new Node();
+        Node node = new Node();
+        node.value = nodeValue;
+        node.next = null;
+        head = node;
+        tail = node;
+        size = 1;
+        return node;
+
+    }
+
+    public void insert(int nodeValue, int location) {
+        Node node = new Node();
+        node.value = nodeValue;
+        if (head == null) {
+            create(nodeValue);
+        } else if (location == 1) {
+            node.next = head;
+            head = node;
+        } else if (location > size) {
+            node.next = null;
+            tail.next = node;
+            tail = node;
+        } else {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 1; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            node.next = tempNode.next;
+            tempNode.next = node;
+
+        }
+        size = size + 1;
+    }
+
+    public void traverse() {
+        if (head == null) {
+            System.out.println("No Linked List Created");
+        } else {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 0; i < size; i++) {
+                System.out.print(tempNode.value);
+                if (i != size - 1) {
+                    System.out.print("--->");
+                }
+                tempNode = tempNode.next;
+            }
+            System.out.println("");
+
+        }
+    }
+
+    public void search(int value) {
+        Node tempNode = new Node();
+        if (head != null) {
+            tempNode = head;
+            for (int i = 0; i < size; i++) {
+                if (tempNode.value == value) {
+                    System.out.println("Value found at location: " + (i + 1));
+                    return;
+                }
+                tempNode = tempNode.next;
+
+            }
+            System.out.println("Value not found");
+
+        }
+
+    }
+
+    public void delete(int location) {
+        if (location == 1) {
+            head = head.next;
+            size = size - 1;
+            if (size == 0) {
+                tail = null;
+            }
+        } else if (location >= size) {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 0; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = null;
+            tail = tempNode;
+            size = size - 1;
+            if (size == 0) {
+                head = null;
+            }
+        } else {
+            Node tempNode = new Node();
+            tempNode = head;
+            for (int i = 0; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = tempNode.next.next;
+            size = size - 1;
+        }
+    }
+
+    public void deleteCompleteList() {
+        head = null;
+        tail = null;
+        System.out.println("Singly List List Deleted");
+    }
+}
+
+
+public class SinglyLinkedList {
+
+    public static void main(String[] args) {
+        SinlyLinkedListMethods sLLM = new SinlyLinkedListMethods();
+        sLLM.create(5);
+        sLLM.insert(1, 1);
+        sLLM.insert(2, 2);
+        sLLM.insert(3, 3);
+        sLLM.insert(4, 4);
+        sLLM.insert(111, 1);
+//        System.out.println(sLLM.head.value);
+//                System.out.println(sLLM.head.next.value);
+//        System.out.println(sLLM.head.next.next.value);
+//        System.out.println(sLLM.head.next.next.next.value);
+//        System.out.println(sLLM.head.next.next.next.next.value);
+
+        sLLM.traverse();
+        sLLM.search(34);
+        sLLM.delete(1);
+        sLLM.traverse();
+        sLLM.deleteCompleteList();
+        sLLM.traverse();
+
+    }
+
+}
