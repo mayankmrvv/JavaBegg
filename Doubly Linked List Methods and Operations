@@ -148,7 +148,7 @@ public class DLL {
     
    public void deleteEntireList(){
         Node tempNode =head;
-        for(int i=1; i<size; i++){
+        for(int i=1; i<=size; i++){
             tempNode.prev=null;
             tempNode=tempNode.next;
         }
