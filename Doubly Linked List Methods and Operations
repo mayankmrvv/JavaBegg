@@ -146,7 +146,12 @@ public class DLL {
         }
     }
     
-    public void deleteEntireList(){
+   public void deleteEntireList(){
+        Node tempNode =head;
+        for(int i=1; i<size; i++){
+            tempNode.prev=null;
+            tempNode=tempNode.next;
+        }
         head=null;
         tail=null;
         System.out.println("List Deleted");
