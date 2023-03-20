@@ -92,7 +92,7 @@ public class DLL {
     public boolean search(int nodeValue) {
         if (head != null) {
             Node tempNode = head;
-            for (int i = 1; i < size; i++) {
+            for (int i = 1; i <=size; i++) {
                 if (tempNode.value == nodeValue) {
                     System.out.println("Value found at location:" + (i));
                     return true;
