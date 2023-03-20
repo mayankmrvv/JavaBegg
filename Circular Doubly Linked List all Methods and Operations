@@ -56,20 +56,19 @@ public class CDLL {
     }
 
     public void traversal() {
-        if(head!=null){
+        if (head != null) {
             Node tempNode = head;
-        System.out.print(tempNode.value + "-->");
-        for (int i = 1; i < size; i++) {
-            tempNode = tempNode.next;
-            System.out.print(tempNode.value);
-            if (i != size - 1) {
-                System.out.print("-->");
+            System.out.print(tempNode.value + "-->");
+            for (int i = 1; i < size; i++) {
+                tempNode = tempNode.next;
+                System.out.print(tempNode.value);
+                if (i != size - 1) {
+                    System.out.print("-->");
 
+                }
             }
-        }
-        System.out.println("");
-        }
-        else{
+            System.out.println("");
+        } else {
             System.out.println("List Does not exist");
         }
     }
@@ -112,12 +111,23 @@ public class CDLL {
                 head.prev = tail;
                 tail.prev = head;
                 System.out.println("deleted");
+                size = size - 1;
+                if (size == 0) {
+                    head = null;
+                    tail = null;
+
+                }
             } else if (location > size) {
                 tail.prev.next = head;
                 tail = tail.prev;
                 head.prev = tail;
                 System.out.println("deleted");
+                size = size - 1;
+                if (size == 0) {
+                    head = null;
+                    tail = null;
 
+                }
             } else {
                 Node tempNode = head;
                 for (int i = 1; i < location - 1; i++) {
@@ -128,7 +138,6 @@ public class CDLL {
                 System.out.println("deleted");
 
             }
-            size = size - 1;
         } else {
             System.out.println("Circular Doubly Linked List Does Not Exist");
         }
@@ -145,6 +154,7 @@ public class CDLL {
         System.out.println("List Deleted");
     }
 }
+
 
 public class CircularDoublyLinkedList {
 
