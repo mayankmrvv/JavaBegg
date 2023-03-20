@@ -1,0 +1,195 @@
+public class Node {
+    public int value;
+    public Node next;
+    public Node prev;
+    
+}
+
+public class CDLL {
+
+    public Node head;
+    public Node tail;
+    public int size;
+
+    public Node create(int nodeValue) {
+        Node node = new Node();
+        head = new Node();
+        node.value = nodeValue;
+        node.prev = node;
+        node.next = node;
+        head = node;
+        tail = node;
+        size = 1;
+        return head;
+    }
+
+    public void insert(int nodeValue, int location) {
+        Node node = new Node();
+        node.value = nodeValue;
+        if (head == null) {
+            create(nodeValue);
+            return;
+        } else if (location == 1) {
+            node.next = head;
+            node.prev = head;
+            head.prev = node;
+            tail.next = node;
+            head = node;
+
+        } else if (location > size) {
+            node.prev = tail;
+            node.next = head;
+            tail.next = node;
+            tail = node;
+        } else {
+            Node tempNode = head;
+            for (int i = 1; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            node.next = tempNode.next;
+            node.prev = tempNode;
+            tempNode.next = node;
+            node.next.prev = node;
+        }
+        size = size + 1;
+
+    }
+
+    public void traversal() {
+        if(head!=null){
+            Node tempNode = head;
+        System.out.print(tempNode.value + "-->");
+        for (int i = 1; i < size; i++) {
+            tempNode = tempNode.next;
+            System.out.print(tempNode.value);
+            if (i != size - 1) {
+                System.out.print("-->");
+
+            }
+        }
+        System.out.println("");
+        }
+        else{
+            System.out.println("List Does not exist");
+        }
+    }
+
+    public void revTraversal() {
+        Node tempNode = tail;
+        System.out.print(tail.value + "<--");
+        for (int i = size - 1; i > 0; i--) {
+            tempNode = tempNode.prev;
+            System.out.print(tempNode.value);
+            if (i != 1) {
+                System.out.print("<--");
+            }
+        }
+    }
+
+    public boolean search(int nodeValue) {
+        if (head != null) {
+            Node tempNode = head;
+            for (int i = 1; i <= size; i++) {
+                if (tempNode.value == nodeValue) {
+                    System.out.println("Value found at: " + i);
+                    return true;
+
+                }
+                tempNode = tempNode.next;
+            }
+
+        }
+
+        System.out.println("Value not found");
+
+        return false;
+    }
+
+    public void delete(int location) {
+        if (head != null) {
+            if (location == 1) {
+                head = head.next;
+                head.prev = tail;
+                tail.prev = head;
+                System.out.println("deleted");
+            } else if (location > size) {
+                tail.prev.next = head;
+                tail = tail.prev;
+                head.prev = tail;
+                System.out.println("deleted");
+
+            } else {
+                Node tempNode = head;
+                for (int i = 1; i < location - 1; i++) {
+                    tempNode = tempNode.next;
+                }
+                tempNode.next = tempNode.next.next;
+                tempNode.next.prev = tempNode;
+                System.out.println("deleted");
+
+            }
+            size = size - 1;
+        } else {
+            System.out.println("Circular Doubly Linked List Does Not Exist");
+        }
+    }
+
+    public void deleteEntireList() {
+        Node tempNode = head;
+        for (int i = 1; i < size; i++) {
+            tempNode.prev = null;
+            tempNode = tempNode.next;
+        }
+        head = null;
+        tail = null;
+        System.out.println("List Deleted");
+    }
+}
+
+public class CircularDoublyLinkedList {
+
+    public static void main(String[] args) {
+        CDLL cdll = new CDLL();
+        cdll.create(10);
+        System.out.println(cdll.head.value);
+        System.out.println("--------------------");
+        cdll.insert(1, 1);
+        System.out.println(cdll.head.value);
+        System.out.println(cdll.head.next.value);
+        System.out.println("--------------------");
+        cdll.insert(3, 3);
+        System.out.println(cdll.head.value);
+        System.out.println(cdll.head.next.value);
+        System.out.println(cdll.head.next.next.value);
+        System.out.println("--------------------");
+        cdll.insert(2, 2);
+        System.out.println(cdll.head.value);
+        System.out.println(cdll.head.next.value);
+        System.out.println(cdll.head.next.next.value);
+        System.out.println(cdll.head.next.next.next.value);
+        System.out.println("--------------------");
+        cdll.traversal();
+        System.out.println("--------------------");
+        cdll.traversal();
+        cdll.revTraversal();
+        System.out.println("--------------------");
+        cdll.search(10);
+        cdll.search(1);
+        cdll.search(2);
+        cdll.search(3);
+        System.out.println("--------------------");
+        cdll.delete(1);
+        cdll.traversal();
+        System.out.println("--------------------");
+        cdll.delete(3);
+        cdll.traversal();
+        System.out.println("--------------------");
+        cdll.delete(2);
+        cdll.traversal();
+        System.out.println("--------------------");
+        cdll.deleteEntireList();
+        cdll.traversal();
+
+    }
+
+}
