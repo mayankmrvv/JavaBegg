@@ -113,6 +113,8 @@ public class CDLL {
                 System.out.println("deleted");
                 size = size - 1;
                 if (size == 0) {
+                    head.prev=null;
+                    head.next=null;
                     head = null;
                     tail = null;
 
@@ -124,6 +126,8 @@ public class CDLL {
                 System.out.println("deleted");
                 size = size - 1;
                 if (size == 0) {
+                    head.prev=null;
+                    head.next=null;
                     head = null;
                     tail = null;
 
