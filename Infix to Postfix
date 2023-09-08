@@ -23,7 +23,7 @@ String str = "9-(5+3)*4/6";
                     val.push(val1 + val2+op.pop());
                     op.push(ch);
                 } else {
-                    if (ch == '*' || ch == '/') {
+                    if (op.peek() == '*' || op.peek() == '/') {
                         String val2 = val.pop();
                         String val1 = val.pop();
                         val.push(val1 + val2+op.pop());
