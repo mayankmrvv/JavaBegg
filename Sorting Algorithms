@@ -1,1 +1,179 @@
+public class JavaApplication357 {
 
+    public static void printArray(int[] arr) {
+        for (int val : arr) {
+            System.out.print(val + " ");
+        }
+        System.out.println();
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void bubbleSort(int[] arr, int n) {
+        for (int i = 0; i <= n - 2; i++) {
+            boolean swap = false;
+            for (int j = 0; j <= n - 2 + -i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                    swap = true;
+                }
+            }
+            if (!swap) {
+                return;
+            }
+        }
+    }
+
+    public static void selectionSort(int[] arr, int n) {
+        for (int i = 0; i <= n - 2; i++) {
+            int min = i;
+            for (int j = i + 1; j <= n - 1; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+            swap(arr, i, min);
+        }
+    }
+
+    public static void insertionSort(int[] arr, int n) {
+        for (int i = 1; i <= n - 1; i++) {
+            int curr = arr[i];
+            int j;
+            for (j = i - 1; j >= 0; j--) {
+                if (arr[j] > curr) {
+                    arr[j + 1] = arr[j];
+                } else {
+                    break;
+                }
+            }
+            arr[j + 1] = curr;
+        }
+    }
+
+    public static void mergeSort(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = (l + r) / 2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+        merge(arr, l, mid, r);
+    }
+
+    public static void merge(int[] arr, int l, int mid, int r) {
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
+        int[] left = new int[n1];
+        int[] right = new int[n2];
+        int i, j, k;
+        for (i = 0; i <= n1-1; i++) {
+            left[i] = arr[l + i];
+        }
+        for (j =0; j <= n2-1; j++) {
+            right[j] = arr[mid + 1 + j];
+        }
+        i = 0;
+        j = 0;
+        k = l;
+        while (i <= n1 - 1 && j <= n2 - 1) {
+            if (left[i] < right[j]) {
+                arr[k] = left[i];
+                k++;
+                i++;
+            } else {
+                arr[k] = right[j];
+                k++;
+                j++;
+            }
+        }
+
+        while (i <= n1 - 1) {
+            arr[k] = left[i];
+            k++;
+            i++;
+        }
+        while (j <= n2 - 1) {
+            arr[k] = right[j];
+            k++;
+            j++;
+        }
+    }
+    
+    public static void quickSort(int[] arr, int s, int e){
+        if(s>=e) return;
+        int pi = partition(arr,s,e);
+        quickSort(arr,s,pi-1);
+        quickSort(arr,pi+1,e);
+    }
+    
+    public static int partition(int[] arr, int s, int e){
+        int pivot=arr[s];
+        int count=0;
+        for(int i=s+1; i<=e; i++){
+            if(arr[i]<=pivot){
+                count++;
+            }
+        }
+        int pi = count+s;
+        swap(arr,s,pi);
+        int i=s;
+        int j=e;
+        while(i<pi && j>pi){
+            while(arr[i]<=pivot){
+                i++;
+            }
+            while(arr[j]<pivot){
+                j--;
+            }
+            if(i<pi && j>pi){
+                swap(arr,i,j);
+            }
+        }
+        
+        return pi;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.print("Array before sorting: ");
+        System.out.println();
+        printArray(arr);
+        bubbleSort(arr, arr.length);
+        System.out.println("Array After Bubble Sort: ");
+        printArray(arr);
+        int[] brr = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.print("Array before sorting: ");
+        System.out.println();
+        printArray(brr);
+        selectionSort(brr, brr.length);
+        System.out.println("Array After Selection Sort: ");
+        printArray(brr);
+        int[] crr = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.print("Array before sorting: ");
+        System.out.println();
+        printArray(crr);
+        insertionSort(crr, crr.length);
+        System.out.println("Array After Insertion Sort: ");
+        printArray(crr);
+        int[] drr = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.print("Array before sorting: ");
+        System.out.println();
+        printArray(drr);
+        mergeSort(drr, 0,drr.length-1);
+        System.out.println("Array After Merge Sort: ");
+        printArray(drr);
+        int[] err = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.print("Array before sorting: ");
+        System.out.println();
+        printArray(err);
+        mergeSort(err, 0,err.length-1);
+        System.out.println("Array After Quick Sort: ");
+        printArray(err);
+    }
+
+}
